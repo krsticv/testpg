@@ -34,6 +34,15 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		cordova.plugins.notification.local.schedule({
+		id         : 2,
+		title      : 'I asdasd asdasdas will bother you every minute',
+		text       : '.. until you cancel all notifications',
+		sound      : null,
+		every      : 'minute',
+		autoClear  : false,
+		at         : new Date(new Date().getTime() + 10*1000)
+	});
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
