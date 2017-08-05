@@ -38,13 +38,15 @@ var app = {
 		
 cordova.plugins.notification.local.schedule({
   id         : 46,
-  title      : 'smarac',
-  text       : 'do bola',
+  title      : 'Motivisi Se',
+  text       : 'Ma ti si bre carina!',
+  every		 : 'minute',
   sound      : null,
-  every      : 'minute',
+  icon		 : "file://foglogo.png",
+  smallicon	 : "file://foglogo.png",
   autoClear  : false,
-  at         : new Date(new Date().getTime() + 10*1000),
-  icon: "http://sciactive.com/pnotify/includes/github-icon.png"
+  at         : new Date(new Date().getTime())
+ 
 });
     },
     // Update DOM on a Received Event

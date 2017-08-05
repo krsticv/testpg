@@ -629,6 +629,14 @@ module.exports = [
             "cordova.plugins.notification.local.core",
             "plugin.notification.local.core"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
+        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
+        "pluginId": "cordova-plugin-sqlite-2",
+        "clobbers": [
+            "sqlitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -656,7 +664,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.5",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-local-notification": "0.8.4",
-    "cordova-plugin-app-event": "1.2.0"
+    "cordova-plugin-app-event": "1.2.0",
+    "cordova-plugin-sqlite-2": "1.0.4"
 }
 // BOTTOM OF METADATA
 });

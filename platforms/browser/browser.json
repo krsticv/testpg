@@ -90,6 +90,9 @@
         },
         "cordova-plugin-app-event": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-sqlite-2": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {},
@@ -723,6 +726,14 @@
                 "cordova.plugins.notification.local.core",
                 "plugin.notification.local.core"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
+            "id": "cordova-plugin-sqlite-2.sqlitePlugin",
+            "pluginId": "cordova-plugin-sqlite-2",
+            "clobbers": [
+                "sqlitePlugin"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -748,6 +759,7 @@
         "cordova-plugin-vibration": "2.1.5",
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-local-notification": "0.8.4",
-        "cordova-plugin-app-event": "1.2.0"
+        "cordova-plugin-app-event": "1.2.0",
+        "cordova-plugin-sqlite-2": "1.0.4"
     }
 }
