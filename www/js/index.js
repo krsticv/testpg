@@ -16,8 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
+ var originalConsoleLog = console.log.bind(console);
+ console.log = function (str) {
+   originalConsoleLog(str);
+   display.innerHTML += str + '\n';
+ };
+
 var app = {
     // Application Constructor
+
+
+
+
     initialize: function() {
         this.bindEvents();
     },
@@ -33,21 +45,75 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+
         app.receivedEvent('deviceready');
-		
-		
-cordova.plugins.notification.local.schedule({
-  id         : 46,
-  title      : 'Motivisi Se',
-  text       : 'Ma ti si bre carina!',
-  every		 : 'minute',
-  sound      : null,
-  icon		 : "file://foglogo.png",
-  smallicon	 : "file://foglogo.png",
-  autoClear  : false,
-  at         : new Date(new Date().getTime())
- 
-});
+
+        function copyDatabaseFile(dbName) {
+
+          var sourceFileName = cordova.file.applicationDirectory + 'www/' + dbName;
+          var targetDirName = cordova.file.dataDirectory;
+
+          return Promise.all([
+            new Promise(function (resolve, reject) {
+              resolveLocalFileSystemURL(sourceFileName, resolve, reject);
+            }),
+            new Promise(function (resolve, reject) {
+              resolveLocalFileSystemURL(targetDirName, resolve, reject);
+            })
+          ]).then(function (files) {
+            var sourceFile = files[0];
+            var targetDir = files[1];
+            return new Promise(function (resolve, reject) {
+              targetDir.getFile(dbName, {}, resolve, reject);
+            }).then(function () {
+              console.log("file already copied");
+            }).catch(function () {
+              console.log("file doesn't exist, copying it");
+              return new Promise(function (resolve, reject) {
+                sourceFile.copyTo(targetDir, dbName, resolve, reject);
+              }).then(function () {
+                console.log("database file copied");
+              });
+            });
+          });
+        }
+
+        function notifikacija(){
+          cordova.plugins.notification.local.schedule({
+            id         : 46,
+            title      : window.localStorage.getItem("autor"),
+            text       : window.localStorage.getItem("citat"),
+            sound      : null,
+            every      :"minute",
+            icon		   : "file://foglogo.png",
+            smallicon	 : "file://foglogo.png",
+            autoClear  : false,
+            at         : new Date(new Date().getTime())
+
+          });
+        }
+
+        copyDatabaseFile('citati.db').then(function () {
+          // success! :)
+          var db = sqlitePlugin.openDatabase('citati.db');
+          db.readTransaction(function (txn) {
+            txn.executeSql("SELECT * FROM citati where kategorija='Success' ORDER BY RANDOM() LIMIT 1", [], function (tx, res) {
+              console.log('Successfully read from pre-populated DB:');
+              //console.log(JSON.stringify(res.rows.item(0)));
+              window.localStorage.setItem("citat", res.rows.item(0).citat);
+              window.localStorage.setItem("autor", res.rows.item(0).autor);
+              console.log("Citat: " + window.localStorage.getItem("citat"));
+              console.log("Autor: " + window.localStorage.getItem("autor"));
+              console.log("----------------------------------------");
+            });
+          });
+        }).catch(function (err) {
+          // error! :(
+          console.log(err);
+        });
+
+        notifikacija();
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

@@ -552,6 +552,17 @@ module.exports = [
         "clobbers": [
             "sqlitePlugin"
         ]
+    },
+    {
+        "id": "cordova-promise-polyfill.Promise",
+        "file": "plugins/cordova-promise-polyfill/www/Promise.js",
+        "pluginId": "cordova-promise-polyfill",
+        "runs": true
+    },
+    {
+        "id": "cordova-promise-polyfill.promise.min",
+        "file": "plugins/cordova-promise-polyfill/www/promise.min.js",
+        "pluginId": "cordova-promise-polyfill"
     }
 ];
 module.exports.metadata = 
@@ -580,7 +591,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-vibration": "2.1.5",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-sqlite-2": "1.0.4"
+    "cordova-plugin-sqlite-2": "1.0.4",
+    "cordova-promise-polyfill": "0.0.2"
 };
 // BOTTOM OF METADATA
 });

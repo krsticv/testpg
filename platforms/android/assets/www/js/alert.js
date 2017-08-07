@@ -4,7 +4,7 @@
 function alertDismissed() {
         // do something
 		alert("asdasd");
-		
+
     }
 
     // Show a custom alert
@@ -17,5 +17,5 @@ function alertDismissed() {
             'Done'                  // buttonName
         );
     }
-	
+
 	

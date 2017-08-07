@@ -190,5 +190,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-promise-polyfill": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-promise-polyfill"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

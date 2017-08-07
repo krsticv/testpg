@@ -69,6 +69,9 @@
         },
         "cordova-plugin-sqlite-2": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-promise-polyfill": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {

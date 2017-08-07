@@ -16,8 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
+
+
+
+
     initialize: function() {
         this.bindEvents();
     },
@@ -34,19 +39,17 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		
-		
+
 cordova.plugins.notification.local.schedule({
   id         : 46,
   title      : 'Motivisi Se',
   text       : 'Ma ti si bre carina!',
-  every		 : 'minute',
   sound      : null,
   icon		 : "file://foglogo.png",
   smallicon	 : "file://foglogo.png",
   autoClear  : false,
   at         : new Date(new Date().getTime())
- 
+
 });
     },
     // Update DOM on a Received Event
